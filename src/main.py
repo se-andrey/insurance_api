@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-from .database import init_db, close_db
+
 from .api.routes import router as api_router
 from .calculation_tariff.routes import router as calc_router
-
+from .database import close_db, init_db
 
 app = FastAPI()
 

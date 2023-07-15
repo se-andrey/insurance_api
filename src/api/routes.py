@@ -1,9 +1,10 @@
 import json
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 
-from .pydantic_models import TariffCreate, TariffResponse, get_tariff_create, TariffPatch, get_tariff_patch, get_token, \
-    Token
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+
 from .models import Tariff
+from .pydantic_models import (TariffCreate, TariffPatch, TariffResponse, Token,
+                              get_tariff_create, get_tariff_patch, get_token)
 
 router = APIRouter()
 
