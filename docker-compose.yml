@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: bash -c 'while !</dev/tcp/db/5432 && !</dev/tcp/db_test/6000; do sleep 1; done; uvicorn src.main:app --host 0.0.0.0'
     ports:
       - "8000:8000"
     depends_on:
@@ -15,7 +16,6 @@ services:
       POSTGRES_PASSWORD: ${DB_PASS}
       POSTGRES_DB: ${DB_NAME}
       DB_HOST: db
-      DB_PORT: ${DB_PORT}
   db:
     image: postgres
     environment:

@@ -6,6 +6,7 @@ from fastapi import Header, HTTPException
 from pydantic import BaseModel
 
 from src.config import SECRET
+from src.logger import logger
 
 
 class TariffCreate(BaseModel):
@@ -67,4 +68,5 @@ def get_token(
 
 def validate_token(token):
     if SECRET != token:
+        logger.error("Wrong token")
         raise HTTPException(status_code=401, detail='Wrong token')
